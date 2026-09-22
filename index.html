@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Webcrafters Publisher</title>
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#071421;color:#eaf7f4;font:16px system-ui,sans-serif}
+  main{max-width:560px;padding:40px;border:1px solid #285065;border-radius:18px;background:#102438;text-align:center}
+  h1{color:#5ee6bd} code{color:#ffae75}
+</style>
+<main><h1>Webcrafters Publisher</h1><p id="status">Completando la conexión con Instagram…</p></main>
+<script>
+const p=new URLSearchParams(location.search), code=p.get('code'), el=document.querySelector('#status');
+if(code){
+  fetch('http://127.0.0.1:8765/callback?code='+encodeURIComponent(code),{mode:'no-cors'})
+    .then(()=>el.textContent='Autorización recibida. Ya podés cerrar esta pestaña.')
+    .catch(()=>el.innerHTML='Autorización recibida. Si el proceso local no continúa, copiá la URL completa y volvé a Codex.');
+}else{el.textContent='No se recibió un código de autorización.'}
+</script>
