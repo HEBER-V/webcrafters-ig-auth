@@ -14,5 +14,7 @@ if(code){
   fetch('http://127.0.0.1:8765/callback?code='+encodeURIComponent(code),{mode:'no-cors'})
     .then(()=>el.textContent='Autorización recibida. Ya podés cerrar esta pestaña.')
     .catch(()=>el.innerHTML='Autorización recibida. Si el proceso local no continúa, copiá la URL completa y volvé a Codex.');
-}else{el.textContent='No se recibió un código de autorización.'}
+}else{
+  el.innerHTML='<a style="display:inline-block;padding:14px 22px;border-radius:10px;background:#5ee6bd;color:#071421;font-weight:700;text-decoration:none" href="https://www.instagram.com/oauth/authorize?client_id=1981922915829333&redirect_uri=https%3A%2F%2Fheber-v.github.io%2Fwebcrafters-ig-auth%2F&response_type=code&scope=instagram_business_basic%2Cinstagram_business_content_publish">Conectar Instagram</a>';
+}
 </script>
